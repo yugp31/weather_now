@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Now</h1>
+        
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Enter city name..." 
+                   autocomplete="off" spellcheck="false">
+            <div class="action-buttons">
+                <button id="saveLocation" class="icon-button" title="Save this location">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </button>
+                <button id="clearLocation" class="icon-button" title="Clear saved location">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="loading">Fetching weather data...</div>
+        <div class="error-message"></div>
+
+        <div class="weather-card">
+            <div class="weather-header">
+                <div class="city-name"></div>
+                <div class="timestamp"></div>
+            </div>
+            
+            <div class="weather-info">
+                <div class="weather-item">
+                    <h3 class="temperature"></h3>
+                    <p>Temperature</p>
+                </div>
+                <div class="weather-item">
+                    <h3 class="feels-like"></h3>
+                    <p>Feels Like</p>
+                </div>
+                <div class="weather-item">
+                    <h3 class="humidity"></h3>
+                    <p>Humidity</p>
+                </div>
+                <div class="weather-item">
+                    <h3 class="description"></h3>
+                    <p>Condition</p>
+                </div>
+            </div>
+
+            <a href="#" class="more-details" target="_blank">Go to Zoom Earth</a>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="{{ url_for('static', filename='weather.js') }}"></script>
+</body>
+<script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((registration) => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+  </script>
+  
+</html>
