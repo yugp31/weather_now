@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Weather Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">WeatherNow</div>
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Search city...">
+                    <button id="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+                <div class="units-toggle">
+                    <button id="celsius" class="active">°C</button>
+                    <button id="fahrenheit">°F</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="current-weather">
+                <div class="weather-card">
+                    <div class="location">
+                        <h2 id="city">Loading...</h2>
+                        <p id="date">--</p>
+                    </div>
+                    <div class="weather-info">
+                        <div class="temperature">
+                            <span id="temp">--</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="weather-icon">
+                            <i id="weather-icon" class="fas fa-sun"></i>
+                        </div>
+                        <div class="description" id="description">--</div>
+                    </div>
+                    <div class="details">
+                        <div class="detail-item">
+                            <i class="fas fa-wind"></i>
+                            <span>Wind</span>
+                            <span id="wind">-- km/h</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-tint"></i>
+                            <span>Humidity</span>
+                            <span id="humidity">--%</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span>Pressure</span>
+                            <span id="pressure">-- hPa</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast">
+                <h3>5-Day Forecast</h3>
+                <div class="forecast-container" id="forecast-container">
+                    <!-- Forecast cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <div class="sun-times">
+                    <div class="sunrise">
+                        <i class="fas fa-sunrise"></i>
+                        <span>Sunrise</span>
+                        <span id="sunrise">--:--</span>
+                    </div>
+                    <div class="sunset">
+                        <i class="fas fa-sunset"></i>
+                        <span>Sunset</span>
+                        <span id="sunset">--:--</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="loading-screen" id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+    <!-- in index.html -->
+<script src="script.js" type="module"></script>
+    
+</body>
+</html>
